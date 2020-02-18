@@ -7,7 +7,7 @@ let mongoose = require("mongoose");
 
 const app = express();
 
-mongoose.connect("mongodb+srv://harshitsood:harshit@11@cluster0-u69rg.gcp.mongodb.net/stripe", {
+mongoose.connect("mongodb+srv://harshitsood:harshit%6411@cluster0-u69rg.gcp.mongodb.net/stripe", {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
