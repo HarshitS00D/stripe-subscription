@@ -265,6 +265,7 @@ router.post("/webhooks", async (req, res) => {
         }
       );
     }
+    else res.send(action);
 
   } catch (err) {
     res.send("Webhook err: " + err.message);
