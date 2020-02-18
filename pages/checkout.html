@@ -1,0 +1,98 @@
+<html>
+
+<head>
+    <title>Checkout</title>
+    <script src="https://js.stripe.com/v3/"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"
+        integrity="sha256-T/f7Sju1ZfNNfBh7skWn0idlCBcI3RwdLSS4/I7NQKQ=" crossorigin="anonymous"></script>
+    <style>
+        .MyCardElement {
+            height: 40px;
+            padding: 10px 12px;
+            width: 100%;
+            color: #32325d;
+            background-color: white;
+            border: 1px solid transparent;
+            border-radius: 4px;
+
+            box-shadow: 0 1px 3px 0 #e6ebf1;
+            -webkit-transition: box-shadow 150ms ease;
+            transition: box-shadow 150ms ease;
+        }
+
+        .MyCardElement--focus {
+            box-shadow: 0 1px 3px 0 #cfd7df;
+        }
+
+        .MyCardElement--invalid {
+            border-color: #fa755a;
+        }
+
+        .MyCardElement--webkit-autofill {
+            background-color: #fefde5 !important;
+        }
+    </style>
+
+</head>
+
+
+
+<body>
+    <div class="ui raised very padded text container segment" style="margin-top: 200;">
+        <!-- Use the CSS tab above to style your Element's container. -->
+        <form id="subscription-form">
+            <!-- <div id="card-element" class="MyCardElement">
+                
+            </div>
+            
+            <div id="card-errors" role="alert"></div> -->
+            <div class="ui form">
+                <div class="fields">
+                    <div class="seven wide field">
+                        <label>Card Number</label>
+                        <input type="text" name="card[number]" maxlength="16" placeholder="Card #" id="cardNumber">
+                    </div>
+                    <div class="three wide field">
+                        <label>CVC</label>
+                        <input type="text" name="card[cvc]" maxlength="3" placeholder="CVC" id="CVC">
+                    </div>
+                    <div class="six wide field">
+                        <label>Expiration</label>
+                        <div class="two fields">
+                            <div class="field">
+                                <select class="ui fluid search dropdown" name="card[expire-month]" id="month">
+                                    <option value="">Month</option>
+                                    <option value="1">January</option>
+                                    <option value="2">February</option>
+                                    <option value="3">March</option>
+                                    <option value="4">April</option>
+                                    <option value="5">May</option>
+                                    <option value="6">June</option>
+                                    <option value="7">July</option>
+                                    <option value="8">August</option>
+                                    <option value="9">September</option>
+                                    <option value="10">October</option>
+                                    <option value="11">November</option>
+                                    <option value="12">December</option>
+                                </select>
+                            </div>
+                            <div class="field">
+                                <input type="text" name="card[expire-year]" maxlength="4" placeholder="Year"
+                                    id="cardExpiryYear">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <button class="ui blue button" type="submit" style="margin-top: 20px;">CHECKOUT</button>
+            <button class="ui red button" onclick="cancel()" style="margin-top: 20px;">CANCEL</button>
+            <form>
+    </div>
+</body>
+<script src="checkout-script.js"></script>
+
+</html>

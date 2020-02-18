@@ -1,0 +1,142 @@
+<html>
+
+<head>
+    <title>HOME</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"
+        integrity="sha256-T/f7Sju1ZfNNfBh7skWn0idlCBcI3RwdLSS4/I7NQKQ=" crossorigin="anonymous"></script>
+
+</head>
+
+<body onload="fetchAccountDetails()">
+    <div class="ui container" style="margin-top: 50px;">
+
+        <div>
+            <button class="ui black button" style="float: right;" onclick="logout()">LOGOUT</button>
+            <img class="ui small circular image" src="/images/user.png">
+            <h2 id="name"></h2>
+        </div>
+
+
+        <!--plan status-->
+        <div class="ui vertical segment" style="margin-top: 20px;">
+            <div class="ui card">
+                <div class="content">
+                    <div class="header">Account Details</div>
+                </div>
+                <div class="content">
+                    <h4 class="ui sub header">Details</h4>
+                    <div class="ui small feed">
+                        <div class="event">
+                            <div class="content">
+                                <div class="ui sub header">
+                                    PLAN: <label id="d1"></label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="event">
+                            <div class="content">
+                                <div class="ui sub header">
+                                    STATUS: <label id="d2"></label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="event">
+                            <div class="content">
+                                <div class="ui sub header">
+                                    CREDIT: <label id="credit" style="color: red;"></label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--change plan button-->
+        <div>
+            <button class="ui green button" id="changePlanButton" onclick="changePlan()" style="margin-top: 20px;">
+                Change Plan
+            </button>
+        </div>
+
+        <div id="plandiv" style="margin-top: 20px;">
+            <H1> Available Plans </H1>
+            <!--plan 1-->
+            <div class="ui cards">
+                <div class="card">
+                    <div class="content">
+                        <div class="header">Plan 1</div>
+                    </div>
+                    <div class="content">
+                        <h4 class="ui sub header">Features</h4>
+                        <div class="ui small feed">
+                            <div class="event">
+                                <div class="content">
+                                    <div class="summary">
+                                        feature 1
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="event">
+                                <div class="content">
+                                    <div class="summary">
+                                        feature 2
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="event">
+                                <div class="content">
+                                    <div class="summary">
+                                        feature 3
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="extra content">
+                        <button class="ui green button" onclick="plan(1)">Rs. 900</button>
+                    </div>
+                </div>
+                <!--plan 2-->
+                <div class="card">
+                    <div class="content">
+                        <div class="header">Plan 2</div>
+                    </div>
+                    <div class="content">
+                        <h4 class="ui sub header">Features</h4>
+                        <div class="ui small feed">
+                            <div class="event">
+                                <div class="content">
+                                    <div class="summary">
+                                        feature 1
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="event">
+                                <div class="content">
+                                    <div class="summary">
+                                        feature 2
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="event">
+                                <div class="content">
+                                    <div class="summary">
+                                        feature 3
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="extra content">
+                        <button class="ui green button" onclick="plan(2)">Rs. 1900</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="home-script.js" type="text/javascript"></script>
+
+</html>
