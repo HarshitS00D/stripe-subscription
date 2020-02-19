@@ -13,7 +13,7 @@ mongoose.connect("mongodb+srv://harshitsood:harshit%4011@cluster0-u69rg.gcp.mong
 });
 mongoose.connection
   .once("open", () => {
-    console.log("Connected to MongoBD");
+    console.log("Connected to MongoDB");
   })
   .on("error", err => {
     console.log(err);
@@ -22,7 +22,7 @@ mongoose.connection
 app.use(express.json());
 app.use(morgan("dev"))
 app.use(bodyParser.json());
-app.use(express.static("pages"));
+app.use(express.static(path.join(__dirname, '/pages')));
 app.use(routes);
 
 const port = process.env.PORT || 3000;
