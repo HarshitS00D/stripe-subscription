@@ -156,7 +156,7 @@ router.post("/create-customer", async (req, res) => {
               $set: {
                 cid: customer.id,
                 pmid: subscription.latest_invoice.payment_intent.payment_method,
-                credit: subscription.plan.metadata.credit
+                //credit: subscription.plan.metadata.credit
               }
             });
 
@@ -252,7 +252,7 @@ router.post("/webhooks", async (req, res) => {
       const credits = activePlan.nickname === "Plan 1" ? 10 : 20;
       await User.updateOne(
         { cid: action.data.object.customer },
-        { credit: -5 },
+        { credit: credits },
         err => {
           if (err) {
             console.warn(err);
@@ -269,7 +269,7 @@ router.post("/webhooks", async (req, res) => {
       await User.updateOne(
         { cid: action.data.object.customer },
         { credit: 0 },
-        err => {
+        async (err) => {
           if (err) {
             console.warn(err);
             res.send({ message: "Failed", credits: 0 });
