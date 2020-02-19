@@ -252,7 +252,7 @@ router.post("/webhooks", async (req, res) => {
       const credits = activePlan.nickname === "Plan 1" ? 10 : 20;
       await User.updateOne(
         { cid: action.data.object.customer },
-        { credit: credits },
+        { credit: -5 },
         err => {
           if (err) {
             console.warn(err);
