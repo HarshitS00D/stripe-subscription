@@ -156,7 +156,7 @@ router.post("/create-customer", async (req, res) => {
               $set: {
                 cid: customer.id,
                 pmid: subscription.latest_invoice.payment_intent.payment_method,
-                credit: subscription.plan.metadata.credit
+                //credit: subscription.plan.metadata.credit
               }
             });
 
@@ -222,16 +222,16 @@ router.post('/change-plan', async (req, res) => {
     }
   );
 
-  await User.updateOne(
-    {
-      _id: id
-    },
-    {
-      $set: {
-        credit: response.items.data[0].plan.metadata.credit
-      }
-    }
-  );
+  // await User.updateOne(
+  //   {
+  //     _id: id
+  //   },
+  //   {
+  //     $set: {
+  //       credit: response.items.data[0].plan.metadata.credit
+  //     }
+  //   }
+  // );
 
   res.send(response);
 
