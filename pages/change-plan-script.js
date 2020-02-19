@@ -18,8 +18,15 @@ planDetail = () => {
 }
 
 changePlan = async (planId) => {
+    let submitbtn = document.getElementById(planId + "btn");
+    submitbtn.className = "ui primary loading button";
     const res = await axios.post('/change-plan', { planId, id: JSON.parse(sessionStorage.getItem('id')) })
+    submitbtn.className = "ui blue button";
     alert("Plan Changed");
     window.location.href = "home.html";
 
+}
+
+cancel = () => {
+    window.location.href = "home.html";
 }

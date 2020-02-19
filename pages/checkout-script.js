@@ -41,6 +41,9 @@ form.addEventListener('submit', async function (event) {
     // We don't want to let default form submission happen here,
     // which would refresh the page.
     event.preventDefault();
+    let submitbtn = document.getElementById("submitbtn");
+    submitbtn.className = "ui primary loading button";
+
     let obj = {
         id: JSON.parse(sessionStorage.getItem('id')),
         plan: JSON.parse(sessionStorage.getItem('plan')),
@@ -51,8 +54,10 @@ form.addEventListener('submit', async function (event) {
             cvc: document.getElementById('CVC').value
         }
     }
+
     const result = await axios.post('/create-customer', obj)
-    console.log(result)
+    submitbtn.className = "ui blue button";
+
     if (result.data === "ok")
         window.location.href = "home.html";
     else alert(result.data.message);
