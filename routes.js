@@ -156,7 +156,7 @@ router.post("/create-customer", async (req, res) => {
               $set: {
                 cid: customer.id,
                 pmid: subscription.latest_invoice.payment_intent.payment_method,
-                //credit: subscription.plan.metadata.credit
+                credit: subscription.plan.metadata.credit
               }
             });
 
@@ -235,7 +235,6 @@ router.post('/change-plan', async (req, res) => {
 
   res.send(response);
 
-  //res.send("working");
 });
 
 
@@ -248,8 +247,9 @@ router.post("/webhooks", async (req, res) => {
       const customer = await stripe.customers.retrieve(
         action.data.object.customer
       );
-      const activePlan = customer.subscriptions.data[0].items.data[0].plan;
-      const credits = activePlan.nickname === "Plan 1" ? 10 : 20;
+
+      const credits = customer.subscriptions.data[0].items.data[0].plan.metadata.credit;
+
       await User.updateOne(
         { cid: action.data.object.customer },
         { credit: credits },
@@ -285,11 +285,11 @@ router.post("/webhooks", async (req, res) => {
                 id: user[0]._id
               },
               {
-                status: "INACTIVE,Payment Pending"
+                status: "Inactive"
               }
             )
 
-            res.send({ credit: 0, status: "INACTIVE,Payment Pending" });
+            res.send({ credit: 0, status: "Inactive" });
           }
 
         }
