@@ -265,6 +265,37 @@ router.post("/webhooks", async (req, res) => {
         }
       );
     }
+    else if (action.type === "invoice.payment_failed") {
+      await User.updateOne(
+        { cid: action.data.object.customer },
+        { credit: 0 },
+        err => {
+          if (err) {
+            console.warn(err);
+            res.send({ message: "Failed", credits: 0 });
+          } else {
+            const user = await User.find(
+              {
+                cid: action.data.object.customer
+              }
+            );
+
+            await Subscription.updateOne(
+              {
+                id: user[0]._id
+              },
+              {
+                status: "INACTIVE,Payment Pending"
+              }
+            )
+
+            res.send({ credit: 0, status: "INACTIVE,Payment Pending" });
+          }
+
+        }
+      );
+
+    }
     else res.send(action);
 
   } catch (err) {
