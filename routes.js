@@ -6,7 +6,7 @@ const Subscription = require("./schema").Subscription;
 let stripe = require('stripe')('sk_test_gY7JgcoVgEahKXOTdd4UQTy3007XKkxyXI');
 
 router.get("/", (req, res) => {
-  res.sendFile("./pages/login.html");
+  res.sendFile(__dirname+"/pages/login.html");
 });
 
 router.post("/register", async (req, res) => {
