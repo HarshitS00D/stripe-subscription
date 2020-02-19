@@ -22,7 +22,7 @@ mongoose.connection
 app.use(express.json());
 app.use(morgan("dev"))
 app.use(bodyParser.json());
-app.use(express.static(path.join(__dirname, '/pages')));
+app.use(express.static("pages"));
 app.use(routes);
 
 const port = process.env.PORT || 3000;
